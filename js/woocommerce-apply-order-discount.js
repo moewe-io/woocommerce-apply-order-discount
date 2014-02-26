@@ -7,7 +7,7 @@ jQuery(function ($) {
             var discount = $('#woocommerce-apply-discount').find('input[name=discount]').val();
             $('#order_items_list').find('tr.item').each(function (i, element) {
                 var original_total = $(element).data('unit_subtotal');
-                var quantity = $(element).find('input.quantity').data('o_qty');
+                var quantity = $(element).find('input.quantity').val();
                 var new_total = (original_total * quantity) - (original_total * quantity / 100 * discount);
                 $(element).find('input.line_total').val(accounting.toFixed(new_total, 2)).change();
             });

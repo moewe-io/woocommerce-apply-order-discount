@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WooCommerce Admin Apply Order Discount
-Version: 1.0.0
+Version: 1.0.1
 Plugin URI: https://github.com/scrobbleme/woocommerce-apply-order-discount
 Description: This plugin allows administrators to apply discounts on orders from the administration panel.
 Author: Adrian M&ouml;rchen
