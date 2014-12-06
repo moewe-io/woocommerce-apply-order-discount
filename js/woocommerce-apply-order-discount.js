@@ -1,22 +1,25 @@
-jQuery(function ($) {
-    $('#woocommerce-apply-discount').find('button.apply_discount').click(function () {
-        var item_wrapper = $('.woocommerce_order_items_wrapper');
-        item_wrapper.block({ message: null, overlayCSS: { background: '#fff url(' + woocommerce_writepanel_params.plugin_url + '/assets/images/ajax-loader.gif) no-repeat center', opacity: 0.6 } });
+jQuery(function (jQuery) {
+    jQuery('#woocommerce-apply-discount').find('button.apply_discount').click(apply_discount);
+
+    function apply_discount() {
+
         var answer = confirm(scrobble_me_wcaod_locales.confirm_apply_discount);
-        if (answer) {
-            var discount = $('#woocommerce-apply-discount').find('input[name=discount]').val();
-            $('#order_items_list').find('tr.item').each(function (i, element) {
-                var original_total = $(element).data('unit_subtotal');
-                var quantity = $(element).find('input.quantity').val();
-                var new_total = (original_total * quantity) - (original_total * quantity / 100 * discount);
-                $(element).find('input.line_total').val(accounting.toFixed(new_total, 2)).change();
-            });
+        if (!answer) {
+            return false;
         }
-        item_wrapper.unblock();
+        var discount = jQuery('#woocommerce-apply-discount').find('input[name=discount]').val();
+        if (discount.length == 0) {
+            discount = 0;
+        }
+
+        jQuery('#order_line_items').find('tr.item').each(function (i, element) {
+            var original_total = jQuery(element).find('.line_subtotal').val();
+            original_total = original_total.replace(",", ".");
+            var new_total = original_total - (original_total / 100 * discount);
+            jQuery(element).find('.line_total').val(new_total);
+        });
+        jQuery('#woocommerce-order-items').find('button.button.button-primary.save-action').click();
         alert(scrobble_me_wcaod_locales.apply_success_message);
-    }).hover(function () {
-            $('.woocommerce_order_items input.line_total').css('background-color', '#e3d2dd');
-        }, function () {
-            $('.woocommerce_order_items input.line_total').css('background-color', '');
-        })
+        return false;
+    }
 });
