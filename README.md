@@ -15,9 +15,14 @@ If you want to support this plugin, you can
 
 ## Changelog
 
+1.1.1 
+
+* Added Updater
+* Fixed compatibility with latest WooCommerce 2.6.x
+
 1.1
 
-* Compatibility with latest WooCommerce (
+* Compatibility with latest WooCommerce
 * The container is only shown, when the order is editable
 
 1.0.1

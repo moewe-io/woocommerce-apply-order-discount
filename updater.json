@@ -1,0 +1,9 @@
+{
+  "name": "WooCommerce Apply Order Discount Before Tax",
+  "version": "1.1.1",
+  "author": "MOEWE GbR - Adrian M&ouml;rchen, Markus Weigelt",
+  "download_url": "https://github.com/moewe-io/woocommerce-apply-order-discount/archive/stable.zip",
+  "sections": {
+    "description": "This plugins shows what you can do with FavPress"
+  }
+}
