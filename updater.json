@@ -1,9 +1,9 @@
 {
   "name": "WooCommerce Apply Order Discount Before Tax",
-  "version": "1.1.1",
-  "author": "MOEWE GbR - Adrian M&ouml;rchen, Markus Weigelt",
+  "version": "1.1.2",
+  "author": "MOEWE",
   "download_url": "https://github.com/moewe-io/woocommerce-apply-order-discount/archive/stable.zip",
   "sections": {
-    "description": "This plugins shows what you can do with FavPress"
+    "description": "This plugin allows administrators to apply discounts on orders from the administration panel."
   }
 }
