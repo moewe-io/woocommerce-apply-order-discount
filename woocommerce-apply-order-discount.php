@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WooCommerce Admin Apply Order Discount
-Version: 1.1.1
+Version: 1.1.2
 Plugin URI: https://github.com/scrobbleme/woocommerce-apply-order-discount
 Description: This plugin allows administrators to apply discounts on orders from the administration panel.
 Author: MOEWE GbR - Adrian M&ouml;rchen, Markus Weigelt
@@ -10,7 +10,7 @@ Domain Path: /languages/
 Author URI: https://www.moewe.io
 */
 
-add_action('add_meta_boxes', 'scrobble_me_wcaod_add_apply_discount_container');
+add_action('add_meta_boxes', 'scrobble_me_wcaod_add_apply_discount_container', 10, 2);
 add_action('admin_enqueue_scripts', 'scrobble_me_wcaod_enque_scripts');
 
 function scrobble_me_wcaod_enque_scripts() {
@@ -20,12 +20,15 @@ function scrobble_me_wcaod_enque_scripts() {
         'apply_success_message'  => __('Please press "Calc Taxes" and "Calc Totals" and save the order afterwards.', 'woocommerce-apply-order-discount')));
 }
 
-function scrobble_me_wcaod_add_apply_discount_container() {
-    global $post_id;
-    if (!get_post_type($post_id) == 'shop_order') {
+/**
+ * @param $post_type string
+ * @param $post WP_Post
+ */
+function scrobble_me_wcaod_add_apply_discount_container($post_type, $post) {
+    if ($post_type != 'shop_order') {
         return;
     }
-    $order = new WC_Order($post_id);
+    $order = new WC_Order($post->ID);
     if (!$order->is_editable()) {
         return;
     }
@@ -42,7 +45,7 @@ function scrobble_me_wcaod_create_apply_discount_container() {
         </li>
         <li>
             <button
-                class="button apply_discount"><?php _e('Apply Discount', 'woocommerce-apply-order-discount'); ?></button>
+                    class="button apply_discount"><?php _e('Apply Discount', 'woocommerce-apply-order-discount'); ?></button>
         </li>
     </ul>
     <?php
