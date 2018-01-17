@@ -15,6 +15,10 @@ If you want to support this plugin, you can
 
 ## Changelog
 
+1.1.2
+
+* Bugfix for adding metaboxes
+
 1.1.1 
 
 * Added Updater
